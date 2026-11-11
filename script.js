@@ -22,7 +22,6 @@ let draggingTask = null;
 let confirmAction;
 let toastTimer;
 let languageTimer;
-let themeTimer;
 const taskDialog = $('#task-dialog');
 const projectDialog = $('#project-dialog');
 const taskForm = $('#task-form');
@@ -201,7 +200,7 @@ function renderOverview(tasks, projectCounts) {
         )
         .join(
             ''
-        )}</div><div class="overview-grid"><section><div class="section-heading"><h2>${t('projectProgress')}</h2><button class="icon-button" type="button" data-new-project aria-label="${t('newProject')}">${icon('plus')}</button></div>${
+        )}</div><div class="overview-grid"><section><div class="section-heading"><h2>${t('projectProgress')}</h2><button class="icon-button" type="button" data-new-project aria-label="${t('newProject')}">${icon('plus')}</button></div><div class="project-summary-list">${
         data.projects
             .map((project) => {
                 const { total, completed } = projectCounts.get(project.id);
@@ -213,7 +212,7 @@ function renderOverview(tasks, projectCounts) {
             'noProjectsHint',
             `<button type="button" class="button primary" data-new-project>${t('newProject')}</button>`
         )
-    }</section><section><div class="section-heading"><h2>${t('nextSteps')}</h2><button class="text-button" type="button" data-view="upcoming">${t('viewAll')} ${icon('arrow')}</button></div>${upcoming.length ? agenda(upcoming) : empty('noUpcoming', 'noUpcomingHint')}</section></div>`;
+    }</div></section><section><div class="section-heading"><h2>${t('upcoming')}</h2><button class="text-button" type="button" data-view="upcoming">${t('viewAll')} ${icon('arrow')}</button></div>${upcoming.length ? agenda(upcoming) : empty('noUpcoming', 'noUpcomingHint')}</section></div>`;
 }
 function render(animate = false) {
     content.classList.remove('is-entering');
@@ -350,15 +349,11 @@ function setThemeLabel() {
     $('meta[name="theme-color"]').content = dark ? '#171b1a' : '#f2f3ed';
 }
 $('#theme-toggle').addEventListener('click', () => {
-    clearTimeout(themeTimer);
-    root.classList.add('theme-changing');
-    void root.offsetWidth;
     root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
     setThemeLabel();
     try {
         localStorage.setItem('byedeadline-theme', root.dataset.theme);
     } catch {}
-    themeTimer = setTimeout(() => root.classList.remove('theme-changing'), 320);
 });
 languageButtons.forEach((button) =>
     button.addEventListener('click', () => {

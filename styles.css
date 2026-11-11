@@ -15,7 +15,7 @@
     --danger: #cf6d60;
     --warning: #ac804a;
     --status-text: #7d8578;
-    --success: #657d59;
+    --success: #449a12;
     --project-terracotta: #bf8d78;
     --project-olive: #91a17b;
     --project-blue: #839fb9;
@@ -25,11 +25,13 @@
     --project-rose: #bc929e;
     --radius: 14px;
     --sidebar-width: 234px;
+    --theme-duration: 280ms;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: var(--text);
     background: var(--background);
+    transition: background-color var(--theme-duration);
     -webkit-font-smoothing: antialiased;
 }
 :root[data-theme='dark'] {
@@ -49,7 +51,7 @@
     --danger: #ed958b;
     --warning: #e9af68;
     --status-text: #9da69d;
-    --success: #a0c98a;
+    --success: #8ccd6d;
     --project-terracotta: #c66f4d;
     --project-olive: #86a653;
     --project-blue: #6391d4;
@@ -165,12 +167,12 @@ p {
     font-weight: 700;
     letter-spacing: -1.1px;
     color: var(--text);
-    transition: color 280ms;
+    transition: color var(--theme-duration);
 }
 .brand-dot {
     color: var(--accent);
     margin-left: -3px;
-    transition: color 280ms;
+    transition: color var(--theme-duration);
 }
 .brand-mark {
     width: 27px;
@@ -182,7 +184,7 @@ p {
     stroke-linecap: butt;
     stroke-linejoin: round;
     transform: translateY(-2px) skewY(-12deg);
-    transition: stroke 280ms;
+    transition: stroke var(--theme-duration);
 }
 .primary-nav {
     display: grid;
@@ -201,8 +203,8 @@ p {
     background: transparent;
     color: var(--muted);
     transition:
-        background 180ms,
-        color 180ms,
+        background var(--theme-duration),
+        color var(--theme-duration),
         transform 180ms;
 }
 .primary-nav button:hover,
@@ -279,7 +281,7 @@ p {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    transition: color 280ms;
+    transition: color var(--theme-duration);
 }
 .project-button:hover .project-name,
 .project-button[aria-current='page'] .project-name {
@@ -319,6 +321,7 @@ p {
     border-top: 1px solid var(--line);
     color: var(--muted);
     font-size: 11px;
+    transition: border-color var(--theme-duration);
 }
 .archive-button {
     display: flex;
@@ -334,8 +337,8 @@ p {
     font-size: 13px;
     text-align: left;
     transition:
-        background 180ms,
-        color 180ms;
+        background var(--theme-duration),
+        color var(--theme-duration);
 }
 .archive-button:hover,
 .archive-button:focus-visible,
@@ -400,8 +403,8 @@ p {
     background: transparent;
     color: var(--muted);
     transition:
-        color 180ms,
-        background 180ms;
+        color var(--theme-duration),
+        background var(--theme-duration);
 }
 .language-switch button[aria-pressed='true'] {
     background: var(--surface);
@@ -419,8 +422,8 @@ p {
     color: var(--muted);
     flex-shrink: 0;
     transition:
-        background 180ms,
-        color 180ms,
+        background var(--theme-duration),
+        color var(--theme-duration),
         transform 180ms;
 }
 .icon-button:hover {
@@ -485,8 +488,10 @@ h1 {
     font-size: 12px;
     font-weight: 500;
     transition:
-        background 200ms,
-        box-shadow 200ms,
+        color var(--theme-duration),
+        background-color var(--theme-duration),
+        border-color var(--theme-duration),
+        box-shadow var(--theme-duration),
         transform 200ms;
 }
 .primary {
@@ -537,6 +542,8 @@ button:active,
     background: transparent;
     border: 0;
     font-size: 13px;
+    color: var(--text);
+    transition: color var(--theme-duration);
 }
 .filter-field {
     display: flex;
@@ -552,6 +559,7 @@ button:active,
     border: 1px solid var(--line);
     border-radius: 8px;
     min-height: 38px;
+    color: var(--muted);
 }
 .board {
     display: grid;
@@ -565,8 +573,8 @@ button:active,
     padding-bottom: 16px;
     border-radius: var(--radius);
     transition:
-        background 180ms,
-        box-shadow 180ms;
+        background var(--theme-duration),
+        box-shadow var(--theme-duration);
 }
 .lane.is-drop-target {
     background: var(--accent-soft);
@@ -619,11 +627,6 @@ button:active,
     padding: 18px 16px 12px;
     margin-bottom: 12px;
     box-shadow: 0 2px 3px rgb(30 35 25 / 0.015);
-    transition:
-        border-color 200ms,
-        box-shadow 200ms,
-        transform 200ms,
-        opacity 200ms;
 }
 .card-checklist {
     display: grid;
@@ -645,7 +648,7 @@ button:active,
     min-width: 0;
     overflow-wrap: anywhere;
     color: var(--text);
-    transition: color 280ms;
+    transition: color var(--theme-duration);
 }
 .card-checklist input:checked + span {
     color: var(--muted);
@@ -667,7 +670,7 @@ button:active,
     gap: 6px;
     align-items: center;
     min-width: 0;
-    transition: color 280ms;
+    transition: color var(--theme-duration);
 }
 .project-tag span:last-child {
     overflow: hidden;
@@ -757,7 +760,7 @@ button:active,
     border-radius: 3px;
     background: var(--subtle);
     overflow: hidden;
-    transition: background-color 280ms;
+    transition: background-color var(--theme-duration);
 }
 .mini-progress span {
     display: block;
@@ -766,7 +769,7 @@ button:active,
     background: var(--project-color, var(--accent));
     transition:
         width 350ms var(--ease),
-        background-color 280ms;
+        background-color var(--theme-duration);
 }
 .card-actions {
     display: flex;
@@ -785,6 +788,10 @@ button:active,
     text-align: center;
     font-size: 13px;
     line-height: 1.6;
+    transition: border-color var(--theme-duration);
+}
+.empty-state p {
+    color: var(--muted);
 }
 .empty-state p + p {
     font-size: 12px;
@@ -837,7 +844,39 @@ button:active,
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
     gap: 32px;
 }
+.overview-grid > section {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+.project-summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-height: 0;
+    max-height: 420px;
+    overflow-y: auto;
+    padding: 1px 2px 2px;
+}
+.project-summary-list .project-progress {
+    flex: 1 0 auto;
+    min-height: 76px;
+    margin-bottom: 0;
+}
+.overview-grid .agenda {
+    flex: 1;
+    grid-auto-rows: 1fr;
+    max-height: 420px;
+    overflow-y: auto;
+    padding: 1px 2px 2px;
+}
+.overview-grid .empty-state {
+    flex: 1;
+}
 .section-heading {
+    min-height: 36px;
+    flex-shrink: 0;
     display: flex;
     justify-content: space-between;
     gap: 12px;
@@ -875,9 +914,6 @@ button:active,
     border-radius: var(--radius);
     background: var(--surface);
     text-align: left;
-    transition:
-        border-color 180ms,
-        transform 180ms;
 }
 .project-progress-top {
     display: flex;
@@ -892,7 +928,7 @@ button:active,
     align-items: center;
     font-size: 13px;
     color: var(--text);
-    transition: color 280ms;
+    transition: color var(--theme-duration);
 }
 .project-progress-top > span:last-child {
     color: var(--muted);
@@ -911,9 +947,6 @@ button:active,
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: var(--surface);
-    transition:
-        border-color 180ms,
-        transform 180ms;
     width: 100%;
     text-align: left;
 }
@@ -1054,7 +1087,7 @@ legend {
 }
 .checklist-row label > span {
     color: var(--text);
-    transition: color 280ms;
+    transition: color var(--theme-duration);
 }
 input[type='checkbox'],
 input[type='radio'] {
@@ -1117,7 +1150,7 @@ input[type='radio'] {
     position: absolute;
     inset: 0 3px;
     background: transparent;
-    transition: background 180ms;
+    transition: background var(--theme-duration);
 }
 .sidebar-resize:hover::after,
 .sidebar-resize:focus-visible::after,
@@ -1208,24 +1241,77 @@ body.is-resizing {
 .language-changing .primary-nav {
     animation: language-enter 550ms cubic-bezier(0.2, 0.65, 0.3, 1);
 }
-.theme-changing,
-.theme-changing body,
-.theme-changing .sidebar,
-.theme-changing .topbar,
-.theme-changing .task-card,
-.theme-changing .editor-dialog,
-.theme-changing .project-progress,
-.theme-changing .agenda-row,
-.theme-changing .secondary,
-.theme-changing .primary-nav button,
-.theme-changing .project-button,
-.theme-changing .language-switch button {
+.sidebar,
+.topbar,
+.task-card,
+.editor-dialog,
+.project-progress,
+.agenda-row,
+.search-field,
+.filter-field select,
+.language-switch,
+.stats-grid,
+.stat,
+.toolbar {
     transition:
-        background-color 280ms,
-        color 280ms,
-        border-color 280ms,
-        box-shadow 280ms,
-        transform 300ms var(--ease);
+        background-color var(--theme-duration),
+        border-color var(--theme-duration),
+        box-shadow var(--theme-duration),
+        transform 300ms var(--ease),
+        opacity 200ms;
+}
+.nav-count,
+.lane-count,
+.empty-state p,
+.filter-field select,
+.filter-field > span,
+.search-field > .icon,
+.stat p,
+.stat strong,
+.task-status,
+.agenda-status,
+.agenda-date,
+.agenda-arrow,
+.project-progress-top > span:last-child,
+.page-description,
+.kicker,
+.topbar-location > span,
+#current-view,
+.breadcrumb,
+.task-description,
+.task-meta,
+.priority-tag,
+.workspace-footer,
+.text-button {
+    transition:
+        color var(--theme-duration),
+        background-color var(--theme-duration),
+        border-color var(--theme-duration);
+}
+.search-field > .icon,
+.filter-field > span {
+    color: var(--muted);
+}
+.project-button {
+    transition:
+        background-color var(--theme-duration),
+        transform 180ms;
+}
+input::placeholder,
+textarea::placeholder {
+    color: var(--muted);
+    opacity: 1;
+    transition: color var(--theme-duration);
+}
+.stat strong:not(.is-overdue) {
+    color: var(--text);
+}
+.project-dot,
+.status-dot,
+.primary-nav button[aria-current='page']::before {
+    transition:
+        background-color var(--theme-duration),
+        border-color var(--theme-duration);
 }
 @keyframes view-enter {
     from {
@@ -1312,7 +1398,6 @@ body.is-resizing {
     .sidebar {
         transform: translateX(-100%);
         width: 250px;
-        transition: transform 300ms var(--ease);
     }
     .sidebar.is-open {
         transform: translateX(0);
@@ -1413,8 +1498,8 @@ body.is-resizing {
         color: var(--muted);
         font-size: 10px;
         transition:
-            background 180ms,
-            color 180ms;
+            background var(--theme-duration),
+            color var(--theme-duration);
     }
     .mobile-status button[aria-pressed='true'] {
         background: var(--surface);
@@ -1539,14 +1624,13 @@ body.is-resizing {
     line-height: 1.5;
     overflow-wrap: anywhere;
     color: var(--text);
-    transition: color 280ms;
+    transition: color var(--theme-duration);
 }
 h1,
 h2,
-h3,
 .task-open {
     color: var(--text);
-    transition: color 280ms;
+    transition: color var(--theme-duration);
 }
 .agenda-status {
     flex-shrink: 0;
